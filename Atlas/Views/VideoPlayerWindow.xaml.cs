@@ -82,22 +82,31 @@ namespace Atlas.Views
 
         private void ProgressSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (_isDragging)
-            {
-                VideoPlayer.Position = TimeSpan.FromSeconds(ProgressSlider.Value);
-            }
+           
         }
 
         private void ProgressSlider_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             _isDragging = true;
+
+            if (_isPlaying)
+            {
+                VideoPlayer.Pause();
+            }
         }
+
 
         private void ProgressSlider_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             VideoPlayer.Position = TimeSpan.FromSeconds(ProgressSlider.Value);
             _isDragging = false;
+
+            if (_isPlaying)
+            {
+                VideoPlayer.Play();
+            }
         }
+
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {

@@ -6,12 +6,14 @@
         Width="900"
         WindowStartupLocation="CenterScreen"
         Background="{StaticResource BackgroundBrush}"
-        WindowState="Maximized">
+        WindowState="Normal"
+        KeyDown="Window_KeyDown">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Toolbar -->
@@ -36,13 +38,154 @@
             </Grid>
         </Border>
 
-        <!-- Image Display -->
-        <ScrollViewer Grid.Row="1"
-                      HorizontalScrollBarVisibility="Auto"
-                      VerticalScrollBarVisibility="Auto">
-            <Image x:Name="ImageDisplay"
-                   Stretch="Uniform"
-                   Margin="20"/>
-        </ScrollViewer>
+        <!-- Image Display with Navigation -->
+        <Grid Grid.Row="1" Background="#1E1E1E">
+            <ScrollViewer x:Name="ImageScroller"
+                          HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Auto"
+                          Background="Transparent">
+                <Grid>
+                    <Image x:Name="ImageDisplay"
+                           Stretch="None"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <ScaleTransform x:Name="ImageScale" ScaleX="1" ScaleY="1"/>
+                        </Image.RenderTransform>
+                    </Image>
+                </Grid>
+            </ScrollViewer>
+
+            <!-- Previous Button (Left) -->
+            <Border x:Name="PrevButtonContainer"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="20,0,0,0"
+                    Opacity="0"
+                    Background="#80000000"
+                    CornerRadius="25"
+                    Width="50"
+                    Height="50"
+                    MouseEnter="NavButton_MouseEnter"
+                    MouseLeave="NavButton_MouseLeave">
+                <Button Content="❮"
+                        Background="Transparent"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontSize="24"
+                        FontWeight="Bold"
+                        Cursor="Hand"
+                        Click="PrevButton_Click"
+                        Width="50"
+                        Height="50"/>
+            </Border>
+
+            <!-- Next Button (Right) -->
+            <Border x:Name="NextButtonContainer"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Margin="0,0,20,0"
+                    Opacity="0"
+                    Background="#80000000"
+                    CornerRadius="25"
+                    Width="50"
+                    Height="50"
+                    MouseEnter="NavButton_MouseEnter"
+                    MouseLeave="NavButton_MouseLeave">
+                <Button Content="❯"
+                        Background="Transparent"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontSize="24"
+                        FontWeight="Bold"
+                        Cursor="Hand"
+                        Click="NextButton_Click"
+                        Width="50"
+                        Height="50"/>
+            </Border>
+        </Grid>
+
+        <!-- Bottom Controls -->
+        <Border Grid.Row="2"
+                Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="0,1,0,0"
+                Padding="20,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Left Controls -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <Button Content="🔍−"
+                            Style="{StaticResource ModernButton}"
+                            Width="40"
+                            Height="32"
+                            Padding="0"
+                            Margin="0,0,5,0"
+                            Click="ZoomOut_Click"
+                            ToolTip="Zoom Out"/>
+
+                    <TextBlock x:Name="ZoomText"
+                               Text="100%"
+                               FontSize="13"
+                               Foreground="{StaticResource TextBrush}"
+                               VerticalAlignment="Center"
+                               Margin="10,0"
+                               MinWidth="50"
+                               TextAlignment="Center"/>
+
+                    <Button Content="🔍+"
+                            Style="{StaticResource ModernButton}"
+                            Width="40"
+                            Height="32"
+                            Padding="0"
+                            Margin="5,0,15,0"
+                            Click="ZoomIn_Click"
+                            ToolTip="Zoom In"/>
+
+                    <Button Content="⊡"
+                            Style="{StaticResource ModernButton}"
+                            Width="40"
+                            Height="32"
+                            Padding="0"
+                            Margin="0,0,5,0"
+                            Click="FitToWindow_Click"
+                            ToolTip="Fit to Window"/>
+
+                    <Button Content="1:1"
+                            Style="{StaticResource ModernButton}"
+                            Width="40"
+                            Height="32"
+                            Padding="0"
+                            Click="ActualSize_Click"
+                            ToolTip="Actual Size"/>
+                </StackPanel>
+
+                <!-- Center Info -->
+                <TextBlock Grid.Column="1"
+                           x:Name="ImageInfo"
+                           Text=""
+                           FontSize="12"
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+                <!-- Right Controls -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <Button Content="⤢"
+                            Style="{StaticResource ModernButton}"
+                            Width="40"
+                            Height="32"
+                            Padding="0"
+                            Click="FullScreen_Click"
+                            ToolTip="Fullscreen (F11)"/>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

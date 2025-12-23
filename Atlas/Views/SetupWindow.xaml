@@ -1,0 +1,110 @@
+﻿<Window x:Class="Atlas.Views.SetupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Setup Storage Location" 
+        Height="450" 
+        Width="650"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="{StaticResource BackgroundBrush}">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="Step 1: Choose Storage Location 📁" 
+                           FontSize="24" 
+                           FontWeight="SemiBold"
+                           Foreground="{StaticResource TextBrush}"
+                           Margin="0,0,0,10"/>
+                <TextBlock Text="Where should Atlas hide your files?" 
+                           FontSize="14" 
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           Margin="0,0,0,30"/>
+            </StackPanel>
+
+            <!-- Content -->
+            <StackPanel Grid.Row="1">
+                <!-- Path Display -->
+                <Border Background="{StaticResource SurfaceBrush}" 
+                        BorderBrush="{StaticResource BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="6"
+                        Padding="15"
+                        Margin="0,0,0,15">
+                    <StackPanel>
+                        <TextBlock Text="Selected Location:" 
+                                   FontSize="12" 
+                                   Foreground="{StaticResource TextSecondaryBrush}"
+                                   Margin="0,0,0,5"/>
+                        <TextBlock x:Name="PathTextBlock" 
+                                   Text="" 
+                                   FontSize="13"
+                                   FontFamily="Consolas"
+                                   Foreground="{StaticResource TextBrush}"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Buttons -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0"
+                            Content="📂 Browse..."
+                            Style="{StaticResource ModernButton}"
+                            Height="45"
+                            Click="BrowseButton_Click"/>
+
+                    <Button Grid.Column="2"
+                            Content="⚡ Use Default"
+                            Style="{StaticResource ModernButton}"
+                            Height="45"
+                            Click="UseDefaultButton_Click"/>
+                </Grid>
+
+                <!-- Info -->
+                <Border Background="{StaticResource SurfaceBrush}"
+                        BorderBrush="{StaticResource PrimaryBrush}"
+                        BorderThickness="1"
+                        CornerRadius="6"
+                        Padding="15"
+                        Margin="0,20,0,0">
+                    <StackPanel>
+                        <TextBlock Text="ℹ️ Pro Tip:" 
+                                   FontWeight="SemiBold"
+                                   Foreground="{StaticResource PrimaryBrush}"
+                                   Margin="0,0,0,5"/>
+                        <TextBlock Text="The folder will be hidden automatically. Don't worry, you can access everything through Atlas!" 
+                                   TextWrapping="Wrap"
+                                   FontSize="12"
+                                   Foreground="{StaticResource TextSecondaryBrush}"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- Navigation -->
+            <Button Grid.Row="2" 
+                    x:Name="NextButton"
+                    Content="Next: Set Your PIN →" 
+                    Style="{StaticResource ModernButton}"
+                    Width="200"
+                    Height="45"
+                    FontSize="14"
+                    HorizontalAlignment="Right"
+                    Margin="0,30,0,0"
+                    IsEnabled="False"
+                    Click="NextButton_Click"/>
+        </Grid>
+    </ScrollViewer>
+</Window>

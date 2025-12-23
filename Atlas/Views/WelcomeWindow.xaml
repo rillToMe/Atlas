@@ -1,0 +1,72 @@
+﻿<Window x:Class="Atlas.Views.WelcomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Welcome to Atlas" 
+        Height="500" 
+        Width="700"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="{StaticResource BackgroundBrush}">
+
+	<Grid Margin="40">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<!-- Header -->
+		<StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,20,0,30">
+			<TextBlock Text="🗺️ ATLAS" 
+                       FontSize="48" 
+                       FontWeight="Bold" 
+                       Foreground="{StaticResource PrimaryBrush}"
+                       HorizontalAlignment="Center"/>
+			<TextBlock Text="Your Private Media Vault" 
+                       FontSize="16" 
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       HorizontalAlignment="Center"
+                       Margin="0,5,0,0"/>
+		</StackPanel>
+
+		<!-- Content -->
+		<StackPanel Grid.Row="1" VerticalAlignment="Center">
+			<TextBlock Text="Welcome, bro! 👋" 
+                       FontSize="24" 
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource TextBrush}"
+                       Margin="0,0,0,20"/>
+
+			<TextBlock TextWrapping="Wrap" 
+                       FontSize="14" 
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       LineHeight="24">
+                <Run Text="Atlas is your personal media vault that keeps your photos and videos hidden from prying eyes. "/>
+                <LineBreak/>
+                <LineBreak/>
+                <Run Text="Here's what you get:"/>
+                <LineBreak/>
+                <Run Text="• PIN-protected access - only you get in"/>
+                <LineBreak/>
+                <Run Text="• Hidden storage - invisible to file explorers"/>
+                <LineBreak/>
+                <Run Text="• Built-in viewer - watch and preview without leaving the app"/>
+                <LineBreak/>
+                <Run Text="• Drag &amp; drop import - super easy to add files"/>
+                <LineBreak/>
+                <LineBreak/>
+                <Run Text="Let's get you set up in just 2 quick steps!" FontWeight="SemiBold"/>
+			</TextBlock>
+		</StackPanel>
+
+		<!-- Button -->
+		<Button Grid.Row="2" 
+                Content="Let's Go! 🚀" 
+                Style="{StaticResource ModernButton}"
+                Width="200"
+                Height="45"
+                FontSize="16"
+                HorizontalAlignment="Center"
+                Click="NextButton_Click"/>
+	</Grid>
+</Window>

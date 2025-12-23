@@ -1,0 +1,167 @@
+﻿<Window x:Class="Atlas.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Settings - Atlas" 
+        Height="550" 
+        Width="700"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="{StaticResource BackgroundBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0"
+                Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="0,0,1,0">
+            <StackPanel Margin="0,20,0,0">
+                <Button Content="About"
+                        x:Name="AboutButton"
+                        Style="{StaticResource ModernButton}"
+                        Height="45"
+                        Margin="10,5"
+                        Click="AboutButton_Click"/>
+
+                <TextBlock Text="More coming soon..."
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           FontSize="11"
+                           HorizontalAlignment="Center"
+                           Margin="0,20,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <ScrollViewer Grid.Column="1" 
+                      VerticalScrollBarVisibility="Auto"
+                      Padding="30">
+            <StackPanel x:Name="ContentPanel">
+                
+                <StackPanel x:Name="AboutSection">
+                    <TextBlock Text="About Atlas"
+                               FontSize="24"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource TextBrush}"
+                               Margin="0,0,0,20"/>
+
+                    <Border Background="{StaticResource SurfaceBrush}"
+                            BorderBrush="{StaticResource BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Padding="20"
+                            Margin="0,0,0,20">
+                        <StackPanel>
+                            <TextBlock Text="🗺️ ATLAS"
+                                       FontSize="32"
+                                       FontWeight="Bold"
+                                       Foreground="{StaticResource PrimaryBrush}"
+                                       HorizontalAlignment="Center"
+                                       Margin="0,0,0,5"/>
+                            <TextBlock Text="Your Private Media Vault"
+                                       FontSize="14"
+                                       Foreground="{StaticResource TextSecondaryBrush}"
+                                       HorizontalAlignment="Center"
+                                       Margin="0,0,0,20"/>
+
+                            <Separator Background="{StaticResource BorderBrush}" Margin="0,0,0,15"/>
+
+                            <TextBlock Text="Version 1.0.0"
+                                       FontSize="13"
+                                       Foreground="{StaticResource TextBrush}"
+                                       HorizontalAlignment="Center"
+                                       Margin="0,0,0,5"/>
+                            <TextBlock Text=".NET 8.0 WPF Application"
+                                       FontSize="12"
+                                       Foreground="{StaticResource TextSecondaryBrush}"
+                                       HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="{StaticResource SurfaceBrush}"
+                            BorderBrush="{StaticResource BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Padding="20"
+                            Margin="0,0,0,20">
+                        <StackPanel>
+                            <TextBlock Text="What is Atlas?"
+                                       FontSize="16"
+                                       FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextBrush}"
+                                       Margin="0,0,0,10"/>
+                            <TextBlock TextWrapping="Wrap"
+                                       FontSize="13"
+                                       Foreground="{StaticResource TextSecondaryBrush}"
+                                       LineHeight="22">
+                                Atlas is a private media vault application designed to keep your photos and videos secure and hidden from prying eyes. With PIN-protected access and hidden storage, your media files remain invisible to file explorers while being easily accessible through Atlas's built-in viewer and player.
+                                <LineBreak/>
+                                <LineBreak/>
+                                <Run Text="Key Features:" FontWeight="SemiBold"/>
+                                <LineBreak/>
+                                • PIN-protected access (4-8 digit numeric)
+                                <LineBreak/>
+                                • Hidden storage folder
+                                <LineBreak/>
+                                • Built-in image viewer
+                                <LineBreak/>
+                                • Built-in video player with controls
+                                <LineBreak/>
+                                • Drag and drop import
+                                <LineBreak/>
+                                • Modern dark theme interface
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="{StaticResource SurfaceBrush}"
+                            BorderBrush="{StaticResource BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Padding="20"
+                            Margin="0,0,0,20">
+                        <StackPanel>
+                            <TextBlock Text="Developer"
+                                       FontSize="16"
+                                       FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextBrush}"
+                                       Margin="0,0,0,10"/>
+                            <TextBlock Text="DitDev"
+                                       FontSize="14"
+                                       Foreground="{StaticResource TextBrush}"
+                                       Margin="0,0,0,5"/>
+                            <TextBlock Margin="0,5,0,0">
+                                <Hyperlink NavigateUri="https://ditdev.vercel.app"
+                                           RequestNavigate="Hyperlink_RequestNavigate"
+                                           Foreground="{StaticResource PrimaryBrush}"
+                                           TextDecorations="None">
+                                    <Run Text="🌐 Visit Portfolio"/>
+                                </Hyperlink>
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="{StaticResource SurfaceBrush}"
+                            BorderBrush="{StaticResource BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Padding="20">
+                        <StackPanel>
+                            <TextBlock x:Name="CopyrightText"
+                                       Text="© 2025 DitDev. All rights reserved."
+                                       FontSize="12"
+                                       Foreground="{StaticResource TextSecondaryBrush}"
+                                       HorizontalAlignment="Center"
+                                       Margin="0,0,0,5"/>
+                            <TextBlock Text="Built for privacy"
+                                       FontSize="11"
+                                       Foreground="{StaticResource TextSecondaryBrush}"
+                                       HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
